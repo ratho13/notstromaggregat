@@ -12,6 +12,22 @@
       "destination": "/website/assets/$1"
     },
     {
+      "source": "/en/assets/(.*)",
+      "destination": "/website-en/assets/$1"
+    },
+    {
+      "source": "/fr/assets/(.*)",
+      "destination": "/website-fr/assets/$1"
+    },
+    {
+      "source": "/nl/assets/(.*)",
+      "destination": "/website-nl/assets/$1"
+    },
+    {
+      "source": "/pl/assets/(.*)",
+      "destination": "/website-pl/assets/$1"
+    },
+    {
       "source": "/en/(.*)",
       "destination": "/website-en/$1"
     },
@@ -42,6 +58,56 @@
     {
       "source": "/pl",
       "destination": "/website-pl/index.html"
+    },
+    {
+      "has": [
+        {
+          "type": "host",
+          "value": "backup-generator.baltic-ihub.com"
+        }
+      ],
+      "source": "/(.*)",
+      "destination": "/website-en/$1"
+    },
+    {
+      "has": [
+        {
+          "type": "host",
+          "value": "groupe-electrogene.baltic-ihub.com"
+        }
+      ],
+      "source": "/(.*)",
+      "destination": "/website-fr/$1"
+    },
+    {
+      "has": [
+        {
+          "type": "host",
+          "value": "noodaggregaat.baltic-ihub.com"
+        }
+      ],
+      "source": "/(.*)",
+      "destination": "/website-nl/$1"
+    },
+    {
+      "has": [
+        {
+          "type": "host",
+          "value": "agregat-pradotworczy.baltic-ihub.com"
+        }
+      ],
+      "source": "/(.*)",
+      "destination": "/website-pl/$1"
+    },
+    {
+      "has": [
+        {
+          "type": "host",
+          "value": "notstromaggregat.baltic-ihub.com"
+        }
+      ],
+      "source": "/(.*)",
+      "destination": "/website/$1"
     },
     {
       "source": "/(.*)",

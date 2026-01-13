@@ -4,6 +4,10 @@
   "outputDirectory": "website",
   "rewrites": [
     {
+      "source": "/assets/(.*)",
+      "destination": "/website/assets/$1"
+    },
+    {
       "source": "/en/(.*)",
       "destination": "/website-en/$1"
     },

@@ -1,0 +1,57 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "website/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "website-en/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "website-fr/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "website-nl/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "website-pl/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/website/index.html"
+    },
+    {
+      "src": "/en",
+      "dest": "/website-en/index.html"
+    },
+    {
+      "src": "/fr",
+      "dest": "/website-fr/index.html"
+    },
+    {
+      "src": "/nl",
+      "dest": "/website-nl/index.html"
+    },
+    {
+      "src": "/pl",
+      "dest": "/website-pl/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/website/$1"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/assets/(.*)",
+      "destination": "/website/assets/$1"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+<svg viewBox="0 0 400 350" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="euGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#D97706;stop-opacity:0.1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- EU Countries simplified -->
+  <g fill="url(#euGrad)" stroke="#F59E0B" stroke-width="1" opacity="0.8">
+    <!-- Portugal -->
+    <path d="M45 180 L55 175 L60 200 L55 230 L45 235 L40 210 Z"/>
+    <!-- Spain -->
+    <path d="M55 175 L110 160 L125 190 L110 230 L55 230 L60 200 Z"/>
+    <!-- France -->
+    <path d="M110 160 L150 130 L180 140 L185 180 L150 200 L125 190 Z"/>
+    <!-- Germany -->
+    <path d="M150 130 L190 115 L210 130 L205 165 L180 175 L180 140 Z"/>
+    <!-- Poland -->
+    <path d="M210 130 L260 120 L270 155 L230 170 L205 165 Z"/>
+    <!-- Czech -->
+    <path d="M180 140 L205 135 L205 165 L180 175 Z"/>
+    <!-- Austria -->
+    <path d="M180 175 L220 170 L220 190 L185 195 Z"/>
+    <!-- Italy -->
+    <path d="M150 200 L185 180 L200 200 L190 260 L160 270 L155 220 Z"/>
+    <!-- Netherlands -->
+    <path d="M150 115 L170 110 L175 125 L155 130 Z"/>
+    <!-- Belgium -->
+    <path d="M140 130 L155 125 L160 140 L145 145 Z"/>
+    <!-- Denmark -->
+    <path d="M175 90 L195 85 L200 100 L180 105 Z"/>
+    <!-- Sweden -->
+    <path d="M195 30 L210 25 L230 80 L210 95 L195 50 Z"/>
+    <!-- Finland -->
+    <path d="M250 20 L280 15 L290 70 L260 80 L250 40 Z"/>
+    <!-- Baltic States -->
+    <path d="M260 90 L285 85 L290 130 L265 135 Z"/>
+    <!-- Ireland -->
+    <path d="M70 110 L95 105 L100 130 L75 135 Z"/>
+    <!-- UK (partial) -->
+    <path d="M100 90 L130 80 L140 120 L115 130 L100 115 Z"/>
+    <!-- Hungary -->
+    <path d="M220 170 L260 165 L265 195 L225 200 Z"/>
+    <!-- Romania -->
+    <path d="M265 165 L310 160 L315 200 L270 205 Z"/>
+    <!-- Bulgaria -->
+    <path d="M280 205 L320 200 L325 230 L285 235 Z"/>
+    <!-- Greece -->
+    <path d="M260 240 L290 235 L295 280 L265 285 L260 260 Z"/>
+    <!-- Croatia/Slovenia -->
+    <path d="M200 190 L230 185 L235 210 L205 215 Z"/>
+    <!-- Slovakia -->
+    <path d="M220 155 L260 150 L260 165 L220 170 Z"/>
+  </g>
+  
+  <!-- Germany highlight (Standort) -->
+  <g filter="url(#glow)">
+    <circle cx="190" cy="150" r="8" fill="#F59E0B" opacity="0.8"/>
+    <circle cx="190" cy="150" r="4" fill="#fff"/>
+  </g>
+  
+  <!-- Standort Label -->
+  <text x="200" y="145" fill="#F59E0B" font-family="Inter, sans-serif" font-size="10" font-weight="600">
+    Standort
+  </text>
+  
+  <!-- EU Text -->
+  <text x="200" y="320" fill="#9CA3AF" font-family="Inter, sans-serif" font-size="12" text-anchor="middle">
+    Lieferung in alle EU-Festlandstaaten
+  </text>
+</svg>
+

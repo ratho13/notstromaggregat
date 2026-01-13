@@ -1,57 +1,43 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "website/**",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "website-en/**",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "website-fr/**",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "website-nl/**",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "website-pl/**",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/",
-      "dest": "/website/index.html"
-    },
-    {
-      "src": "/en",
-      "dest": "/website-en/index.html"
-    },
-    {
-      "src": "/fr",
-      "dest": "/website-fr/index.html"
-    },
-    {
-      "src": "/nl",
-      "dest": "/website-nl/index.html"
-    },
-    {
-      "src": "/pl",
-      "dest": "/website-pl/index.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/website/$1"
-    }
-  ],
+  "buildCommand": "echo 'No build needed'",
+  "outputDirectory": "website",
   "rewrites": [
     {
-      "source": "/assets/(.*)",
-      "destination": "/website/assets/$1"
+      "source": "/en/(.*)",
+      "destination": "/website-en/$1"
+    },
+    {
+      "source": "/fr/(.*)",
+      "destination": "/website-fr/$1"
+    },
+    {
+      "source": "/nl/(.*)",
+      "destination": "/website-nl/$1"
+    },
+    {
+      "source": "/pl/(.*)",
+      "destination": "/website-pl/$1"
+    },
+    {
+      "source": "/en",
+      "destination": "/website-en/index.html"
+    },
+    {
+      "source": "/fr",
+      "destination": "/website-fr/index.html"
+    },
+    {
+      "source": "/nl",
+      "destination": "/website-nl/index.html"
+    },
+    {
+      "source": "/pl",
+      "destination": "/website-pl/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/website/$1"
     }
   ]
 }

@@ -4,6 +4,10 @@
   "outputDirectory": "website",
   "rewrites": [
     {
+      "source": "/api/contact",
+      "destination": "/api/contact.js"
+    },
+    {
       "source": "/assets/(.*)",
       "destination": "/website/assets/$1"
     },

@@ -1293,25 +1293,38 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <div style="text-align: center; padding: 2rem 0;">
-                        <div style="font-size: 4rem; margin-bottom: 1.5rem;">
-                            <i class="fas fa-envelope" style="color: var(--primary);"></i>
+                    <h3 style="margin-bottom: 1.5rem;">Kontaktformular</h3>
+                    <form id="contactForm" onsubmit="handleSubmit(event, 'de')">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-Mail *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
                         </div>
-                        <h3 style="margin-bottom: 1rem;">Direkt per E-Mail anfragen</h3>
-                        <p style="color: var(--gray-600); margin-bottom: 2rem;">
-                            Schreiben Sie uns einfach eine E-Mail mit Ihren Fragen oder vereinbaren Sie einen Besichtigungstermin.
-                        </p>
-                        <a href="mailto:notstromaggregat@baltic-ihub.com?subject=Anfrage%20Atlas%20Copco%20QES80%20KD%20Notstromaggregat&body=Guten%20Tag%2C%0A%0AIch%20interessiere%20mich%20für%20das%20Atlas%20Copco%20QES80%20KD%20Notstromaggregat.%0A%0AMeine%20Fragen%3A%0A%0A%0AMit%20freundlichen%20Grüßen" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        <div class="form-group">
+                            <label for="company">Firma (optional)</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Ihre Nachricht *</label>
+                            <textarea id="message" name="message" required placeholder="Bitte beschreiben Sie Ihre Anfrage..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;" id="submitBtn">
                             <i class="fas fa-paper-plane"></i>
-                            E-Mail senden
+                            Nachricht senden
+                        </button>
+                        <div id="formMessage" style="margin-top: 1rem; display: none;"></div>
+                    </form>
+                    <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--gray-200);">
+                        <p style="color: var(--gray-500); font-size: 0.9rem; margin-bottom: 0.5rem;">Oder rufen Sie uns an:</p>
+                        <a href="tel:+4943190898158" style="color: var(--gray-900); font-size: 1.25rem; font-weight: 600; text-decoration: none;">
+                            <i class="fas fa-phone" style="color: var(--primary); margin-right: 0.5rem;"></i>
+                            +49 431 90898158
                         </a>
-                        <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--gray-200);">
-                            <p style="color: var(--gray-500); font-size: 0.9rem; margin-bottom: 0.5rem;">Oder rufen Sie uns an:</p>
-                            <a href="tel:+4943190898158" style="color: var(--gray-900); font-size: 1.25rem; font-weight: 600; text-decoration: none;">
-                                <i class="fas fa-phone" style="color: var(--primary); margin-right: 0.5rem;"></i>
-                                +49 431 90898158
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1373,6 +1386,58 @@
                 navbar.style.background = 'rgba(255, 255, 255, 0.9)';
             }
         });
+        
+        // Contact form submission
+        async function handleSubmit(event, language) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const submitBtn = document.getElementById('submitBtn');
+            const formMessage = document.getElementById('formMessage');
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                company: document.getElementById('company').value || '',
+                message: document.getElementById('message').value,
+                language: language
+            };
+            
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wird gesendet...';
+            formMessage.style.display = 'none';
+            
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.success) {
+                    // Redirect to thank you page
+                    window.location.href = data.redirect || '/danke.html?lang=' + language;
+                } else {
+                    formMessage.style.display = 'block';
+                    formMessage.style.color = 'var(--accent)';
+                    formMessage.textContent = data.error || 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.';
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Nachricht senden';
+                }
+            } catch (error) {
+                console.error('Form submission error:', error);
+                formMessage.style.display = 'block';
+                formMessage.style.color = 'var(--accent)';
+                formMessage.textContent = 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.';
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Nachricht senden';
+            }
+        }
     </script>
 </body>
 </html>

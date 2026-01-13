@@ -1,0 +1,17 @@
+{
+  "name": "notstromaggregat",
+  "version": "1.0.0",
+  "description": "Atlas Copco QES80 KD Notstromaggregat Website",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build needed'",
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.8"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.x"
+  }
+}

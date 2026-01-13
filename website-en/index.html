@@ -1293,25 +1293,38 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <div style="text-align: center; padding: 2rem 0;">
-                        <div style="font-size: 4rem; margin-bottom: 1.5rem;">
-                            <i class="fas fa-envelope" style="color: var(--primary);"></i>
+                    <h3 style="margin-bottom: 1.5rem;">Contact Form</h3>
+                    <form id="contactForm" onsubmit="handleSubmit(event, 'en')">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
                         </div>
-                        <h3 style="margin-bottom: 1rem;">Contact Us Directly</h3>
-                        <p style="color: var(--gray-600); margin-bottom: 2rem;">
-                            Send us an email with your questions or arrange a viewing appointment.
-                        </p>
-                        <a href="mailto:notstromaggregat@baltic-ihub.com?subject=Inquiry%20Atlas%20Copco%20QES80%20KD%20Generator&body=Hello%2C%0A%0AI%20am%20interested%20in%20the%20Atlas%20Copco%20QES80%20KD%20emergency%20generator.%0A%0AMy%20questions%3A%0A%0A%0ABest%20regards" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        <div class="form-group">
+                            <label for="company">Company (optional)</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message *</label>
+                            <textarea id="message" name="message" required placeholder="Please describe your inquiry..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;" id="submitBtn">
                             <i class="fas fa-paper-plane"></i>
-                            Send Email
+                            Send Message
+                        </button>
+                        <div id="formMessage" style="margin-top: 1rem; display: none;"></div>
+                    </form>
+                    <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--gray-200);">
+                        <p style="color: var(--gray-500); font-size: 0.9rem; margin-bottom: 0.5rem;">Or give us a call:</p>
+                        <a href="tel:+4943190898158" style="color: var(--gray-900); font-size: 1.25rem; font-weight: 600; text-decoration: none;">
+                            <i class="fas fa-phone" style="color: var(--primary); margin-right: 0.5rem;"></i>
+                            +49 431 90898158
                         </a>
-                        <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--gray-200);">
-                            <p style="color: var(--gray-500); font-size: 0.9rem; margin-bottom: 0.5rem;">Or give us a call:</p>
-                            <a href="tel:+4943190898158" style="color: var(--gray-900); font-size: 1.25rem; font-weight: 600; text-decoration: none;">
-                                <i class="fas fa-phone" style="color: var(--primary); margin-right: 0.5rem;"></i>
-                                +49 431 90898158
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1373,6 +1386,54 @@
                 navbar.style.background = 'rgba(255, 255, 255, 0.9)';
             }
         });
+        
+        // Contact form submission
+        async function handleSubmit(event, language) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const submitBtn = document.getElementById('submitBtn');
+            const formMessage = document.getElementById('formMessage');
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                company: document.getElementById('company').value || '',
+                message: document.getElementById('message').value,
+                language: language
+            };
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            formMessage.style.display = 'none';
+            
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.success) {
+                    window.location.href = data.redirect || '/en/danke.html?lang=en';
+                } else {
+                    formMessage.style.display = 'block';
+                    formMessage.style.color = 'var(--accent)';
+                    formMessage.textContent = data.error || 'An error occurred. Please try again.';
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                }
+            } catch (error) {
+                console.error('Form submission error:', error);
+                formMessage.style.display = 'block';
+                formMessage.style.color = 'var(--accent)';
+                formMessage.textContent = 'An error occurred. Please try again later.';
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+            }
+        }
     </script>
 </body>
 </html>

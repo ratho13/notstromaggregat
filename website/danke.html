@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vielen Dank - Ihre Anfrage wurde erhalten</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0039AD;
+            --accent: #D61810;
+            --gray-50: #f8fafc;
+            --gray-900: #111827;
+            --white: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-900);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .thank-you-container {
+            max-width: 600px;
+            width: 100%;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .thank-you-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 3rem 2rem;
+        }
+        
+        .thank-you-header i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .thank-you-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .thank-you-content {
+            padding: 2rem;
+        }
+        
+        .thank-you-content p {
+            margin-bottom: 1rem;
+            color: var(--gray-900);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="thank-you-container">
+        <div class="thank-you-header">
+            <i class="fas fa-check-circle"></i>
+            <h1 id="thankYouTitle">Vielen Dank!</h1>
+            <p id="thankYouSubtitle">Ihre Anfrage wurde erfolgreich übermittelt</p>
+        </div>
+        <div class="thank-you-content">
+            <p id="thankYouMessage1">Wir haben Ihre Nachricht erhalten und werden uns schnellstmöglich bei Ihnen melden.</p>
+            <p id="thankYouMessage2">Sie erhalten in Kürze eine Bestätigungs-E-Mail an die von Ihnen angegebene Adresse.</p>
+            <a href="/" class="btn" id="backButton">Zurück zur Startseite</a>
+        </div>
+    </div>
+    
+    <script>
+        // Language detection and content update
+        const urlParams = new URLSearchParams(window.location.search);
+        const lang = urlParams.get('lang') || 'de';
+        
+        const translations = {
+            de: {
+                title: 'Vielen Dank!',
+                subtitle: 'Ihre Anfrage wurde erfolgreich übermittelt',
+                message1: 'Wir haben Ihre Nachricht erhalten und werden uns schnellstmöglich bei Ihnen melden.',
+                message2: 'Sie erhalten in Kürze eine Bestätigungs-E-Mail an die von Ihnen angegebene Adresse.',
+                back: 'Zurück zur Startseite'
+            },
+            en: {
+                title: 'Thank You!',
+                subtitle: 'Your inquiry has been successfully submitted',
+                message1: 'We have received your message and will get back to you as soon as possible.',
+                message2: 'You will receive a confirmation email shortly at the address you provided.',
+                back: 'Back to Homepage'
+            },
+            fr: {
+                title: 'Merci!',
+                subtitle: 'Votre demande a été envoyée avec succès',
+                message1: 'Nous avons bien reçu votre message et vous répondrons dans les plus brefs délais.',
+                message2: 'Vous recevrez sous peu un e-mail de confirmation à l\'adresse que vous avez fournie.',
+                back: 'Retour à l\'accueil'
+            },
+            nl: {
+                title: 'Bedankt!',
+                subtitle: 'Uw aanvraag is succesvol verzonden',
+                message1: 'We hebben uw bericht ontvangen en zullen zo spoedig mogelijk contact met u opnemen.',
+                message2: 'U ontvangt binnenkort een bevestigings-e-mail op het door u opgegeven adres.',
+                back: 'Terug naar homepage'
+            },
+            pl: {
+                title: 'Dziękujemy!',
+                subtitle: 'Twoje zapytanie zostało pomyślnie wysłane',
+                message1: 'Otrzymaliśmy Państwa wiadomość i skontaktujemy się z Państwem tak szybko, jak to możliwe.',
+                message2: 'Wkrótce otrzymają Państwo e-mail potwierdzający na podany adres.',
+                back: 'Powrót do strony głównej'
+            }
+        };
+        
+        const t = translations[lang] || translations.de;
+        document.getElementById('thankYouTitle').textContent = t.title;
+        document.getElementById('thankYouSubtitle').textContent = t.subtitle;
+        document.getElementById('thankYouMessage1').textContent = t.message1;
+        document.getElementById('thankYouMessage2').textContent = t.message2;
+        document.getElementById('backButton').textContent = t.back;
+    </script>
+</body>
+</html>

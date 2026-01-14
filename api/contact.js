@@ -289,7 +289,7 @@ Zeitstempel: ${new Date().toLocaleString('de-DE')}
     return res.status(200).json({
       success: true,
       message: langConfig.received,
-      redirect: `/${lang === 'de' ? '' : lang}/danke.html?lang=${lang}`,
+      redirect: `/danke.html?lang=${lang}`,
     });
   } catch (error) {
     console.error('Contact form error:', error.message, error.stack);

@@ -1417,7 +1417,9 @@
                 const data = await response.json();
                 
                 if (response.ok && data.success) {
-                    window.location.href = data.redirect || '/en/danke.html?lang=en';
+                    // Redirect to thank you page - use full URL to avoid path issues
+                    const redirectPath = data.redirect || '/en/danke.html?lang=en';
+                    window.location.href = window.location.origin + redirectPath;
                 } else {
                     formMessage.style.display = 'block';
                     formMessage.style.color = 'var(--accent)';

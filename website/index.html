@@ -1420,8 +1420,9 @@
                 const data = await response.json();
                 
                 if (response.ok && data.success) {
-                    // Redirect to thank you page
-                    window.location.href = data.redirect || '/danke.html?lang=' + language;
+                    // Redirect to thank you page - use full URL to avoid path issues
+                    const redirectPath = data.redirect || '/danke.html?lang=' + language;
+                    window.location.href = window.location.origin + redirectPath;
                 } else {
                     formMessage.style.display = 'block';
                     formMessage.style.color = 'var(--accent)';

@@ -1252,7 +1252,9 @@
                 });
                 const data = await response.json();
                 if (response.ok && data.success) {
-                    window.location.href = data.redirect || '/pl/danke.html?lang=pl';
+                    // Redirect to thank you page - use full URL to avoid path issues
+                    const redirectPath = data.redirect || '/pl/danke.html?lang=pl';
+                    window.location.href = window.location.origin + redirectPath;
                 } else {
                     formMessage.style.display = 'block';
                     formMessage.style.color = 'var(--accent)';

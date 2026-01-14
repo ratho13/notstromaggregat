@@ -79,13 +79,12 @@ const LANGUAGES = {
   },
 };
 
-// SMTP Configuration
+// SMTP Configuration - All-Inkl uses Port 465 with SSL
 const getSMTPConfig = () => {
   return {
     host: 'w014c572.kasserver.com',
-    port: 587,
-    secure: false,
-    requireTLS: true,
+    port: 465,
+    secure: true,
     auth: {
       user: 'notstromaggregat@baltic-ihub.com',
       pass: process.env.ALL_INKL_SMTP_PASSWORD || process.env.ALL_INKL_KAS_PASSWORD,

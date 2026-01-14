@@ -85,10 +85,14 @@ const getSMTPConfig = () => {
     host: 'w014c572.kasserver.com',
     port: 587,
     secure: false,
+    requireTLS: true,
     auth: {
       user: 'notstromaggregat@baltic-ihub.com',
       pass: process.env.ALL_INKL_SMTP_PASSWORD || process.env.ALL_INKL_KAS_PASSWORD,
     },
+    tls: {
+      rejectUnauthorized: false
+    }
   };
 };
 
@@ -289,9 +293,10 @@ Zeitstempel: ${new Date().toLocaleString('de-DE')}
       redirect: `/${lang === 'de' ? '' : lang}/danke.html?lang=${lang}`,
     });
   } catch (error) {
-    console.error('Contact form error:', error);
+    console.error('Contact form error:', error.message, error.stack);
     return res.status(500).json({
       error: 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.',
+      debug: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
   }
 };

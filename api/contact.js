@@ -258,7 +258,7 @@ module.exports = async (req, res) => {
 
     // Send email to admin
     await transporter.sendMail({
-      from: 'notstromaggregat@baltic-ihub.com',
+      from: '"Notstromaggregat Baltic iHub" <notstromaggregat@baltic-ihub.com>',
       to: 'ceo@baltic-ihub.com',
       replyTo: email,
       subject: langConfig.subject,
@@ -280,7 +280,7 @@ Zeitstempel: ${new Date().toLocaleString('de-DE')}
 
     // Send confirmation email to user
     await transporter.sendMail({
-      from: 'notstromaggregat@baltic-ihub.com',
+      from: '"Notstromaggregat Baltic iHub" <notstromaggregat@baltic-ihub.com>',
       to: email,
       subject: langConfig.confirmationSubject,
       html: getConfirmationEmailHTML({ name, email, company, message }, lang),

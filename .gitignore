@@ -5,3 +5,9 @@ node_modules/
 .env.local
 .vercel
 .env*.local
+
+# Large video files (too big for GitHub, host externally)
+*.MOV
+*.mov
+*.mp4
+*.MP4

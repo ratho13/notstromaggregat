@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Notstromaggregat Wissen & Tipps | Baltic iHub</title>
     <meta name="description" content="Wissenswertes über Notstromaggregate, Wartung, Installation und mehr. Tipps von Experten für zuverlässige Notstromversorgung.">
-    
+
     <!-- Hreflang for international SEO -->
     <link rel="alternate" hreflang="de" href="https://notstromaggregat.baltic-ihub.com/blog.html">
     <link rel="alternate" hreflang="en" href="https://backup-generator.baltic-ihub.com/blog.html">
@@ -14,45 +14,52 @@
     <link rel="alternate" hreflang="pl" href="https://agregat-pradotworczy.baltic-ihub.com/blog.html">
     <link rel="alternate" hreflang="x-default" href="https://notstromaggregat.baltic-ihub.com/blog.html">
     <link rel="canonical" href="https://notstromaggregat.baltic-ihub.com/blog.html">
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-    
+
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
     <style>
         :root {
-            --primary: #F59E0B;
-            --primary-dark: #D97706;
+            /* Baltic iHub Farben */
+            --primary: #0039AD;
+            --primary-dark: #002d8a;
+            --accent: #D61810;
+            --accent-light: #e53935;
             --secondary: #1E3A5F;
             --dark: #0F172A;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
             --gray-900: #111827;
-            --gray-800: #1F2937;
-            --gray-700: #374151;
-            --gray-600: #4B5563;
-            --gray-400: #9CA3AF;
-            --gray-200: #E5E7EB;
             --white: #FFFFFF;
             --success: #10B981;
-            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--gray-900);
-            color: var(--white);
+            background: var(--white);
+            color: var(--gray-900);
             line-height: 1.6;
         }
-        
+
         /* Navigation */
         .navbar {
             position: fixed;
@@ -60,23 +67,23 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(15, 23, 42, 0.95);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid var(--gray-100);
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
             gap: 0.75rem;
             text-decoration: none;
-            color: var(--white);
+            color: var(--gray-900);
         }
-        
+
         .logo-icon {
             width: 40px;
             height: 40px;
@@ -86,36 +93,46 @@
             align-items: center;
             justify-content: center;
             font-size: 1.25rem;
+            color: var(--white);
         }
-        
+
         .logo-text {
             font-weight: 700;
             font-size: 1.1rem;
+            color: var(--gray-900);
         }
-        
+
         .nav-links {
             display: flex;
             gap: 2rem;
             align-items: center;
         }
-        
+
         .nav-links a {
-            color: var(--gray-400);
+            color: var(--gray-600);
             text-decoration: none;
             font-size: 0.9rem;
+            font-weight: 500;
             transition: color 0.3s;
         }
-        
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--white);
+
+        .nav-links a:hover {
+            color: var(--primary);
         }
-        
+
+        .nav-links a.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
         .lang-selector {
             display: flex;
             gap: 0.5rem;
+            margin-left: 1rem;
+            padding-left: 1rem;
+            border-left: 1px solid var(--gray-200);
         }
-        
+
         .lang-selector a {
             padding: 0.25rem 0.5rem;
             border-radius: 4px;
@@ -124,96 +141,199 @@
             text-transform: uppercase;
             transition: all 0.3s;
             text-decoration: none;
-            color: var(--gray-400);
+            color: var(--gray-500);
         }
-        
+
+        .lang-selector a:hover {
+            color: var(--primary);
+            background: var(--gray-50);
+        }
+
         .lang-selector a.active {
             background: var(--primary);
-            color: var(--dark);
+            color: var(--white);
         }
-        
-        /* Blog Header */
-        .blog-header {
-            padding: 8rem 2rem 4rem;
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+
+        /* Blog Hero */
+        .blog-hero {
+            padding: 10rem 2rem 5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
         }
-        
-        .blog-header h1 {
-            font-size: 3rem;
+
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .blog-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .blog-hero h1 {
+            font-size: 3.5rem;
             font-weight: 800;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        
-        .blog-header p {
+
+        .blog-hero p {
             font-size: 1.25rem;
-            color: var(--gray-400);
+            opacity: 0.9;
             max-width: 600px;
             margin: 0 auto;
         }
-        
+
         /* Blog Container */
         .blog-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
         }
-        
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--gray-500);
+            font-size: 1.1rem;
+        }
+
         .blog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
-            margin-bottom: 4rem;
         }
-        
+
         .blog-card {
-            background: var(--gray-800);
-            border-radius: 12px;
+            background: var(--white);
+            border-radius: 16px;
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid transparent;
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-200);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
-        
+
         .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0, 57, 173, 0.2);
             border-color: var(--primary);
         }
-        
+
         .blog-card-image {
             width: 100%;
             height: 200px;
-            background: var(--gray-700);
+            background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-200) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-card-image i {
+            font-size: 4rem;
             color: var(--primary);
+            opacity: 0.8;
+            transition: all 0.3s;
         }
-        
+
+        .blog-card:hover .blog-card-image i {
+            transform: scale(1.1);
+            color: var(--accent);
+        }
+
+        .blog-card-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .blog-card:hover .blog-card-image::after {
+            transform: scaleX(1);
+        }
+
         .blog-card-content {
-            padding: 2rem;
+            padding: 1.5rem 2rem 2rem;
         }
-        
+
+        .blog-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
         .blog-card-date {
             font-size: 0.85rem;
-            color: var(--gray-400);
-            margin-bottom: 0.5rem;
+            color: var(--gray-500);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        
+
+        .blog-card-date i {
+            color: var(--primary);
+        }
+
+        .blog-card-category {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--primary);
+            background: rgba(0, 57, 173, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+        }
+
         .blog-card-title {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--white);
+            margin-bottom: 0.75rem;
+            color: var(--gray-900);
+            line-height: 1.4;
+            transition: color 0.3s;
         }
-        
+
+        .blog-card:hover .blog-card-title {
+            color: var(--primary);
+        }
+
         .blog-card-excerpt {
-            color: var(--gray-400);
+            color: var(--gray-600);
             margin-bottom: 1.5rem;
-            line-height: 1.6;
+            line-height: 1.7;
+            font-size: 0.95rem;
         }
-        
+
         .blog-card-link {
             display: inline-flex;
             align-items: center;
@@ -221,20 +341,74 @@
             color: var(--primary);
             text-decoration: none;
             font-weight: 600;
-            transition: gap 0.3s;
+            font-size: 0.9rem;
+            transition: all 0.3s;
         }
-        
+
+        .blog-card-link i {
+            transition: transform 0.3s;
+        }
+
         .blog-card-link:hover {
-            gap: 0.75rem;
+            color: var(--accent);
         }
-        
+
+        .blog-card-link:hover i {
+            transform: translateX(4px);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gray-50);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            color: var(--gray-600);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--gradient);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 14px rgba(0, 57, 173, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 57, 173, 0.4);
+        }
+
         /* Footer */
         .footer {
-            background: var(--dark);
+            background: var(--secondary);
             padding: 3rem 2rem;
-            border-top: 1px solid var(--gray-800);
+            color: var(--white);
         }
-        
+
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -242,63 +416,79 @@
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .footer-logo {
             display: flex;
             align-items: center;
             gap: 1rem;
+            font-size: 0.9rem;
         }
-        
+
+        .footer-logo span:first-child {
+            font-weight: 600;
+        }
+
         .footer-links {
             display: flex;
             gap: 2rem;
         }
-        
+
         .footer-links a {
-            color: var(--gray-400);
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             font-size: 0.9rem;
             transition: color 0.3s;
         }
-        
+
         .footer-links a:hover {
             color: var(--white);
         }
-        
+
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .navbar {
                 padding: 1rem;
             }
-            
+
             .nav-links {
                 gap: 1rem;
             }
-            
-            .nav-links a:not(.lang-selector a) {
+
+            .nav-links > a:not(:last-of-type) {
                 display: none;
             }
-            
-            .blog-header {
-                padding: 6rem 1rem 3rem;
+
+            .lang-selector {
+                margin-left: 0;
+                padding-left: 0;
+                border-left: none;
             }
-            
-            .blog-header h1 {
-                font-size: 2rem;
+
+            .blog-hero {
+                padding: 8rem 1rem 4rem;
             }
-            
+
+            .blog-hero h1 {
+                font-size: 2.5rem;
+            }
+
             .blog-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .blog-container {
-                padding: 2rem 1rem;
+                padding: 3rem 1rem;
             }
-            
+
             .footer-content {
                 flex-direction: column;
                 gap: 1.5rem;
                 text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
             }
         }
     </style>
@@ -315,7 +505,6 @@
             <a href="/#highlights">Vorteile</a>
             <a href="/#specs">Technische Daten</a>
             <a href="/#gallery">Galerie</a>
-            <a href="/#shipping">Lieferung</a>
             <a href="/#contact">Kontakt</a>
             <a href="/blog.html" class="active">Blog</a>
             <div class="lang-selector">
@@ -328,48 +517,64 @@
         </div>
     </nav>
 
-    <!-- Blog Header -->
-    <section class="blog-header">
-        <h1>Blog</h1>
-        <p>Wissenswertes über Notstromaggregate, Wartung, Installation und mehr</p>
+    <!-- Blog Hero -->
+    <section class="blog-hero">
+        <div class="blog-hero-content">
+            <h1>Wissen & Tipps</h1>
+            <p>Alles Wissenswerte rund um Notstromaggregate, Wartung, Installation und professionelle Notstromversorgung</p>
+        </div>
     </section>
 
     <!-- Blog Container -->
     <section class="blog-container">
+        <div class="section-title">
+            <h2>Aktuelle Artikel</h2>
+            <p>Expertenwissen aus der Praxis</p>
+        </div>
+
         <div class="blog-grid">
             <article class="blog-card">
                 <div class="blog-card-image">
-                    <i class="fas fa-cog"></i>
+                    <i class="fas fa-bolt"></i>
                 </div>
                 <div class="blog-card-content">
-                    <div class="blog-card-date">15. Januar 2026</div>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date"><i class="far fa-calendar"></i> 15. Januar 2026</span>
+                        <span class="blog-card-category">Grundlagen</span>
+                    </div>
                     <h2 class="blog-card-title">Was ist ein Notstromaggregat und wann braucht man es?</h2>
-                    <p class="blog-card-excerpt">Notstromaggregate sind unverzichtbar für Unternehmen, die auch bei Stromausfällen handlungsfähig bleiben müssen. Erfahren Sie, wann eine Notstromversorgung sinnvoll ist und welche Leistung benötigt wird.</p>
-                    <a href="#" class="blog-card-link">Weiterlesen <i class="fas fa-arrow-right"></i></a>
+                    <p class="blog-card-excerpt">Notstromaggregate sind unverzichtbar für Unternehmen, die auch bei Stromausfällen handlungsfähig bleiben müssen. Erfahren Sie, wann eine Notstromversorgung sinnvoll ist.</p>
+                    <a href="#" class="blog-card-link">Artikel lesen <i class="fas fa-arrow-right"></i></a>
                 </div>
             </article>
 
             <article class="blog-card">
                 <div class="blog-card-image">
-                    <i class="fas fa-tools"></i>
+                    <i class="fas fa-wrench"></i>
                 </div>
                 <div class="blog-card-content">
-                    <div class="blog-card-date">12. Januar 2026</div>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date"><i class="far fa-calendar"></i> 12. Januar 2026</span>
+                        <span class="blog-card-category">Wartung</span>
+                    </div>
                     <h2 class="blog-card-title">Wartung von Notstromaggregaten: Das sollten Sie wissen</h2>
-                    <p class="blog-card-excerpt">Regelmäßige Wartung ist entscheidend für die Zuverlässigkeit Ihres Notstromaggregats. Wir erklären, welche Wartungsintervalle empfohlen werden und was Sie selbst prüfen können.</p>
-                    <a href="#" class="blog-card-link">Weiterlesen <i class="fas fa-arrow-right"></i></a>
+                    <p class="blog-card-excerpt">Regelmäßige Wartung ist entscheidend für die Zuverlässigkeit Ihres Notstromaggregats. Wir erklären die empfohlenen Wartungsintervalle.</p>
+                    <a href="#" class="blog-card-link">Artikel lesen <i class="fas fa-arrow-right"></i></a>
                 </div>
             </article>
 
             <article class="blog-card">
                 <div class="blog-card-image">
-                    <i class="fas fa-home"></i>
+                    <i class="fas fa-exchange-alt"></i>
                 </div>
                 <div class="blog-card-content">
-                    <div class="blog-card-date">10. Januar 2026</div>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date"><i class="far fa-calendar"></i> 10. Januar 2026</span>
+                        <span class="blog-card-category">Installation</span>
+                    </div>
                     <h2 class="blog-card-title">Automatische Umschaltbox PTB125: Installation und Funktion</h2>
-                    <p class="blog-card-excerpt">Die automatische Umschaltbox sorgt für unterbrechungsfreien Betrieb bei Stromausfall. Hier erfahren Sie, wie die Installation funktioniert und was bei der Planung zu beachten ist.</p>
-                    <a href="#" class="blog-card-link">Weiterlesen <i class="fas fa-arrow-right"></i></a>
+                    <p class="blog-card-excerpt">Die automatische Umschaltbox sorgt für unterbrechungsfreien Betrieb bei Stromausfall. Hier erfahren Sie alles zur Installation.</p>
+                    <a href="#" class="blog-card-link">Artikel lesen <i class="fas fa-arrow-right"></i></a>
                 </div>
             </article>
 
@@ -378,10 +583,13 @@
                     <i class="fas fa-industry"></i>
                 </div>
                 <div class="blog-card-content">
-                    <div class="blog-card-date">8. Januar 2026</div>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date"><i class="far fa-calendar"></i> 8. Januar 2026</span>
+                        <span class="blog-card-category">Gewerbe</span>
+                    </div>
                     <h2 class="blog-card-title">Notstromversorgung für Gewerbe: Planung und Dimensionierung</h2>
-                    <p class="blog-card-excerpt">Für Gewerbebetriebe ist eine zuverlässige Notstromversorgung essentiell. Wir zeigen, wie Sie den richtigen Generator für Ihr Unternehmen finden und was bei der Dimensionierung zu beachten ist.</p>
-                    <a href="#" class="blog-card-link">Weiterlesen <i class="fas fa-arrow-right"></i></a>
+                    <p class="blog-card-excerpt">Für Gewerbebetriebe ist eine zuverlässige Notstromversorgung essentiell. So finden Sie den richtigen Generator.</p>
+                    <a href="#" class="blog-card-link">Artikel lesen <i class="fas fa-arrow-right"></i></a>
                 </div>
             </article>
 
@@ -390,24 +598,42 @@
                     <i class="fas fa-shield-alt"></i>
                 </div>
                 <div class="blog-card-content">
-                    <div class="blog-card-date">5. Januar 2026</div>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date"><i class="far fa-calendar"></i> 5. Januar 2026</span>
+                        <span class="blog-card-category">Sicherheit</span>
+                    </div>
                     <h2 class="blog-card-title">Sicherheitsvorschriften für Notstromaggregate</h2>
-                    <p class="blog-card-excerpt">Sicherheit geht vor: Welche Vorschriften und Normen gelten für Notstromaggregate? Wir geben einen Überblick über die wichtigsten Sicherheitsaspekte und gesetzlichen Anforderungen.</p>
-                    <a href="#" class="blog-card-link">Weiterlesen <i class="fas fa-arrow-right"></i></a>
+                    <p class="blog-card-excerpt">Welche Vorschriften und Normen gelten für Notstromaggregate? Ein Überblick über die wichtigsten Sicherheitsaspekte.</p>
+                    <a href="#" class="blog-card-link">Artikel lesen <i class="fas fa-arrow-right"></i></a>
                 </div>
             </article>
 
             <article class="blog-card">
                 <div class="blog-card-image">
-                    <i class="fas fa-dollar-sign"></i>
+                    <i class="fas fa-euro-sign"></i>
                 </div>
                 <div class="blog-card-content">
-                    <div class="blog-card-date">3. Januar 2026</div>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date"><i class="far fa-calendar"></i> 3. Januar 2026</span>
+                        <span class="blog-card-category">Kaufberatung</span>
+                    </div>
                     <h2 class="blog-card-title">Kosten-Nutzen-Analyse: Neugerät vs. Gebrauchtaggregat</h2>
-                    <p class="blog-card-excerpt">Sollten Sie ein neues oder gebrauchtes Notstromaggregat kaufen? Wir vergleichen Vor- und Nachteile und helfen Ihnen bei der Entscheidung, wann ein gebrauchtes Gerät die bessere Wahl ist.</p>
-                    <a href="#" class="blog-card-link">Weiterlesen <i class="fas fa-arrow-right"></i></a>
+                    <p class="blog-card-excerpt">Sollten Sie ein neues oder gebrauchtes Notstromaggregat kaufen? Wir vergleichen Vor- und Nachteile.</p>
+                    <a href="#" class="blog-card-link">Artikel lesen <i class="fas fa-arrow-right"></i></a>
                 </div>
             </article>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Interesse an unserem Notstromaggregat?</h2>
+            <p>Atlas Copco QES80 KD mit nur 24 Betriebsstunden - jetzt zum Sonderpreis von 14.900 EUR zzgl. MwSt.</p>
+            <a href="/#contact" class="cta-button">
+                <i class="fas fa-envelope"></i>
+                Jetzt anfragen
+            </a>
         </div>
     </section>
 
@@ -415,9 +641,9 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-logo">
-                <span style="font-weight: 600;">© 2026 Baltic iHub GmbH</span>
-                <span style="color: var(--gray-600);">|</span>
-                <span style="color: var(--gray-400);">Ein Unternehmen der THOR Holding</span>
+                <span>© 2026 Baltic iHub GmbH</span>
+                <span style="opacity: 0.5;">|</span>
+                <span style="opacity: 0.7;">Ein Unternehmen der THOR Holding</span>
             </div>
             <div class="footer-links">
                 <a href="https://baltic-ihub.com/impressum" target="_blank">Impressum</a>
@@ -432,9 +658,11 @@
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(15, 23, 42, 0.98)';
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
             } else {
-                navbar.style.background = 'rgba(15, 23, 42, 0.95)';
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
             }
         });
     </script>
